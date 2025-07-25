@@ -1,0 +1,17 @@
+mat-sidenav{
+    width: 200px;
+    text-align: center;
+    padding: 100px 0 0 0;
+    
+}
+mat-sidenav-content{
+    height: 100vh;
+    
+}
+mat-toolbar{
+     background-color: var(--mat-sys-primary-fixed);
+}
+.content-router{
+    padding:10px 20px;
+    border: 1px dashed blue;
+}
