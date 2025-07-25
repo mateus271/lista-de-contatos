@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'lista-de-contatos';
+  title = 'Agenda - Grupo II';
+  icon="chevron_forward";
 }
