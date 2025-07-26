@@ -1,0 +1,22 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Ana Silva",
+      "email": "ana.silva@email.com",
+      "phone": "11999999999"
+    },
+    {
+      "id": 2,
+      "name": "Bruno Souza",
+      "email": "bruno.souza@email.com",
+      "phone": "21988888888"
+    },
+    {
+      "id": 3,
+      "name": "Carla Pereira",
+      "email": "carla.pereira@email.com",
+      "phone": "31977777777"
+    }
+  ]
+}
