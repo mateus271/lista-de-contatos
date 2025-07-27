@@ -10,7 +10,9 @@ export class ContactService {
   public searchParam = new BehaviorSubject<string>("");
   public filteredContactsArray: Contact[] = [];
 
-  private originalContactsArray = new BehaviorSubject<Contact[]>([]);
+  private highestId: number = 0;
+  private originalContactsArray: Contact[] = [];
+  private originalContactsArray$ = new BehaviorSubject<Contact[]>([]);
 
   private readonly API = "http://localhost:3000/contacts";
 
@@ -24,12 +26,13 @@ export class ContactService {
     return this.http.get<Contact>(`${this.API}/${id}`);
   }
 
-  public addContact(contact: Contact): Observable<Contact> {
+  public addContact(contact: Partial<Contact>): Observable<Contact> {
+    const id = this.highestId + 1;
     return this.http.post<Contact>(this.API, contact);
   }
 
-  public updateContact(id: number, contact: Partial<Contact>): Observable<Contact> {
-    return this.http.patch<Contact>(`${this.API}/${id}`, contact);
+  public updateContact(contact: Contact): Observable<Contact> {
+    return this.http.patch<Contact>(`${this.API}/${contact.id}`, contact);
   }
 
   public deleteContact(id: number): Observable<any> {
@@ -42,7 +45,7 @@ export class ContactService {
   }
 
   public searchInArray() {
-    this.filteredContactsArray = this.originalContactsArray.value.filter((contact) => {
+    this.filteredContactsArray = this.originalContactsArray$.value.filter((contact) => {
       return Object.values(contact).some((contact) => {
         if(contact && typeof contact === "string" || contact === "number"){
           return contact.toString().toLowerCase().startsWith(this.searchParam.value.toLowerCase())
@@ -52,6 +55,19 @@ export class ContactService {
   }
 
   public setOriginalContactsArrayData(data: Contact[]): void {
-    this.originalContactsArray.next(data);
+    this.originalContactsArray = data;
+    this.originalContactsArray$.next(data);
+  }
+
+  public findContactById(contactId: number): Contact | undefined {
+    return this.originalContactsArray.find(contact => contact.id === contactId);
+  }
+
+  private setHighestId(): void {
+    const contactWithHighestId = this.originalContactsArray.reduce((previousValue, currentValue) => {
+      return (previousValue && previousValue.id > currentValue.id) ? previousValue : currentValue
+    });
+
+    this.highestId = contactWithHighestId.id;
   }
 }
