@@ -1,22 +1,37 @@
 <mat-sidenav-container>
   <mat-sidenav fixedInViewport="true" mode="side" opened="true" #sidenav>
-    <button mat-button routerLink="">Início</button> <br>
+    <button mat-button routerLink="home">Início</button> <br>
     <button mat-button routerLink="new">Novo Contato</button> <br>
     <button mat-button routerLink="list">Listar Contatos</button> <br>
     <button mat-button routerLink="about">Sobre</button> <br>
   </mat-sidenav>
 
-   <mat-sidenav-content> <!--conteúdo -->
+  <mat-sidenav-content> <!--conteúdo -->
     <mat-toolbar>
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>{{sidenav.opened?'arrow_back_ios':'arrow_forward_ios'}} </mat-icon>
-      </button>
-     
-      <span class="title">Agenda - Grupo II</span>
+      <div class="go-back-button-and-title-container">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>{{sidenav.opened?'arrow_back_ios':'arrow_forward_ios'}} </mat-icon>
+        </button>
+
+        <span class="title">Agenda - Grupo II</span>
+      </div>
+
+      <div class="search-input-and-add-button-container">
+        <mat-form-field class="contact-search-input" appearance="outline" (keydown)="handleKeydown($event)">
+          <mat-icon matPrefix fontSet="material-icons-outlined">search</mat-icon>
+          <mat-label>Pesquisar</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <button class="no-box-shadow" mat-fab extended (click)="addNewContact()">
+          <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+          Novo contato
+        </button>
+      </div>
     </mat-toolbar>
-    
+
     <div class="content-router">
-       <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,9 +1,3 @@
 <div class="contact-list">
-  <mat-card *ngFor="let contact of contacts" class="contact-card">
-    <mat-card-title>{{ contact.name }}</mat-card-title>
-    <mat-card-content>
-      <p><strong>Email:</strong> {{ contact.email }}</p>
-      <p><strong>Telefone:</strong> {{ contact.phone }}</p>
-    </mat-card-content>
-  </mat-card>
+  <app-contact-card *ngFor="let contact of contactService.filteredContactsArray" [contact]="contact"></app-contact-card>
 </div>
