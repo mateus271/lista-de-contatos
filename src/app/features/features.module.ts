@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { NewContactComponent } from './new-contact/new-contact.component';
 import { ListComponent } from './list/list.component';
 import { AboutComponent } from './about/about.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -15,7 +16,7 @@ import { AboutComponent } from './about/about.component';
     AboutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,MaterialModule
   ]
 })
 export class FeaturesModule { }
