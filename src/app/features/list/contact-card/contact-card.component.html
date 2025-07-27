@@ -1,0 +1,11 @@
+<mat-card  class="contact-card">
+  <mat-card-title>{{ contact.name }}</mat-card-title>
+  <mat-card-content>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+    <p><strong>Telefone:</strong> {{ contact.phone | phone}}</p>
+  </mat-card-content>
+  <button class="no-box-shadow" mat-fab extended (click)="editContact(contact.id)">
+    <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+    Editar contato
+  </button>
+</mat-card>

@@ -1,0 +1,29 @@
+<div>
+  <p *ngIf="data.edit">Editar Contato:</p>
+  <p *ngIf="!data.edit">Criar Contato:</p>
+
+  <form [formGroup]="contactForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input matInput type="text" formControlName="phone" [mask]="phoneMask">
+    </mat-form-field>
+  </form>
+
+  <button *ngIf="data.edit" class="no-box-shadow" mat-fab extended (click)="saveChanges()">
+    <mat-icon fontSet="material-icons-outlined">save</mat-icon>
+    Salvar alterações
+  </button>
+
+  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended>
+    <mat-icon fontSet="material-icons-outlined">add_box</mat-icon>
+    Criar contato
+  </button>
+</div>

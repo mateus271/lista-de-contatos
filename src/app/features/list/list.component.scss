@@ -3,9 +3,6 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-}
-
-.contact-card {
-  padding: 16px;
-  border-radius: 8px;
+  overflow-y: scroll;
+  height: calc(100vh - 112px);
 }

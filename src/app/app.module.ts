@@ -5,16 +5,18 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { CommonModule } from '@angular/common';
-
 import { FeaturesModule } from './features/features.module';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,8 +24,13 @@ import { FeaturesModule } from './features/features.module';
     HttpClientModule,
     CommonModule,
     FeaturesModule,
+    MaterialModule
   ],
-  providers: [provideClientHydration(withEventReplay())],
-  bootstrap: [AppComponent],
+  providers: [
+    provideClientHydration(withEventReplay())
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {}
