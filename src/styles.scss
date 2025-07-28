@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
 $material-icons-font-path: "material-icons/iconfont/";
-@import "material-icons/iconfont/material-icons.scss";
+@use "material-icons/iconfont/material-icons.scss";
 
 :root {
   @include mat.all-component-densities(-2);
