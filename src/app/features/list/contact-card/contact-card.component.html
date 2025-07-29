@@ -1,11 +1,18 @@
-<mat-card  class="contact-card">
-  <mat-card-title>{{ contact.name }}</mat-card-title>
-  <mat-card-content>
-    <p><strong>Email:</strong> {{ contact.email }}</p>
-    <p><strong>Telefone:</strong> {{ contact.phone | phone}}</p>
-  </mat-card-content>
-  <button class="no-box-shadow" mat-fab extended (click)="editContact(contact.id)">
-    <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
-    Editar contato
-  </button>
+<mat-card class="contact-card">
+  <div class="card-header">
+    <div class="avatar">{{ getInitials() }}</div>
+    <div class="info">
+      <h3 class="name">{{ contact.name }}</h3>
+      <p class="email">{{ contact.email }}</p>
+      <p class="phone">{{ contact.phone | phone }}</p>
+    </div>
+    <button
+      mat-icon-button
+      (click)="editContact(contact.id)"
+      class="edit-btn"
+      title="Editar contato"
+    >
+      <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+    </button>
+  </div>
 </mat-card>

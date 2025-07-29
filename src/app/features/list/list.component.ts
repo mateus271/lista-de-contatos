@@ -22,12 +22,6 @@ export class ListComponent implements OnInit {
       this.contactService.setOriginalContactsArrayData(sorted);
       this.groupedContacts = this.groupByInitial(sorted);
     });
-    // this.contactService.getContacts().subscribe((contacts) => {
-    //   this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-    //     a.name.localeCompare(b.name)
-    //   );
-    //   this.contactService.setOriginalContactsArrayData(contacts);
-    // });
   }
 
   private groupByInitial(contacts: Contact[]) {

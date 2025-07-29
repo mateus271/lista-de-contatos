@@ -7,7 +7,7 @@ import { ContactModalComponent } from '../../contact-modal/contact-modal.compone
   selector: 'app-contact-card',
   standalone: false,
   templateUrl: './contact-card.component.html',
-  styleUrl: './contact-card.component.scss'
+  styleUrl: './contact-card.component.scss',
 })
 export class ContactCardComponent {
   @Input()
@@ -15,14 +15,21 @@ export class ContactCardComponent {
 
   constructor(private matDialog: MatDialog) {}
 
+  getInitials(): string {
+    if (!this.contact?.name) return '';
+    const parts = this.contact.name.trim().split(' ');
+    if (parts.length === 1) return parts[0][0].toUpperCase();
+    return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+  }
+
   public editContact(contactId: number) {
     this.matDialog.open(ContactModalComponent, {
       data: {
         edit: true,
-        contactId: contactId
+        contactId: contactId,
       },
-      width: "500px",
-      height: "500px"
+      width: '500px',
+      height: '500px',
     });
   }
 }
