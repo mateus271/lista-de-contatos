@@ -31,20 +31,25 @@ export class ContactModalComponent implements OnInit {
   ngOnInit(): void {
     if (this.data.edit && this.data.contactId) {
       this.contactBeingEdited = this.contactService.findContactById(this.data.contactId);
-      this.contactForm.get("name")?.patchValue(this.contactBeingEdited?.name);
-      this.contactForm.get("email")?.patchValue(this.contactBeingEdited?.email);
-      this.contactForm.get("phone")?.patchValue(this.contactBeingEdited?.phone);
+
+      this.contactForm.patchValue({
+        name: this.contactBeingEdited?.name,
+        email: this.contactBeingEdited?.email,
+        phone: this.contactBeingEdited?.phone,
+      });
     }
   }
 
   public saveChanges(): void {
     if (this.data.contactId) {
+      const { name, email, phone } = this.contactForm.value;
+
       const updatedContact: Contact = {
         id: this.data.contactId,
-        name: this.contactForm.get("name")?.value,
-        email: this.contactForm.get("email")?.value,
-        phone: this.contactForm.get("phone")?.value
-      }
+        name,
+        email,
+        phone,
+      };
 
       this.contactService.updateContact(updatedContact).subscribe(response => {
         console.log("resposta da atualização", response);
@@ -55,11 +60,9 @@ export class ContactModalComponent implements OnInit {
   }
 
   public addContact(): void {
-    const newContact: Partial<Contact> = {
-      name: this.contactForm.get("name")?.value,
-      email: this.contactForm.get("email")?.value,
-      phone: this.contactForm.get("phone")?.value
-    }
+    const { name, email, phone } = this.contactForm.value;
+
+    const newContact: Partial<Contact> = { name, email, phone };
 
     this.contactService.addContact(newContact).subscribe(response => {
       console.log("resposta da atualização", response);
