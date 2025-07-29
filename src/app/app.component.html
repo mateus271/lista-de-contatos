@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav fixedInViewport="true" mode="side" opened="" #sidenav>
-   
+
     <button mat-button routerLink="list">Listar Contatos</button> <br>
     <button mat-button routerLink="about">Sobre</button> <br>
   </mat-sidenav>
@@ -19,7 +19,9 @@
         <mat-form-field class="contact-search-input" appearance="outline" (keydown)="handleKeydown($event)">
           <mat-icon matPrefix fontSet="material-icons-outlined">search</mat-icon>
           <mat-label>Pesquisar</mat-label>
-          <input matInput>
+          
+          <input matInput  type="text" [(ngModel)]="searchValue">
+         
         </mat-form-field>
 
         <button class="no-box-shadow" mat-fab extended (click)="addNewContact()">
@@ -28,7 +30,9 @@
         </button>
       </div>
     </mat-toolbar>
-
+      <div  class="info-search">
+        <p *ngIf="searchValue">Buscando: <strong>{{searchValue}}...</strong></p>
+      </div>
     <div class="content-router">
       <router-outlet></router-outlet>
     </div>

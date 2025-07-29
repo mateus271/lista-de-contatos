@@ -2,32 +2,14 @@
   "contacts": [
     {
       "id": "1",
-      "name": "Ana Silva",
+      "name": "Ana Silvaa",
       "email": "ana.silva@email.com",
       "phone": "11999999999"
     },
     {
-      "id": "8693",
-      "name": "bruno",
-      "email": "buno@hotmail.com",
-      "phone": "87912451245"
-    },
-    {
-      "id": "827d",
-      "name": "WENDELL DELMONDES VASCONCELOS",
-      "email": "wendell2009@hotmail.com",
-      "phone": "87991619751"
-    },
-    {
-      "id": "f701",
-      "name": "WENDELL DELMONDES VASCONCELOS",
-      "email": "wendell2009@hotmail.com",
-      "phone": "87991619751"
-    },
-    {
-      "id": "72ea",
-      "name": "DANTAS FERRAMENTAS",
-      "email": "fernadadantas2030@gmail.com",
+      "id": "3332",
+      "name": "dsa",
+      "email": "dsa",
       "phone": "87991619751"
     }
   ]

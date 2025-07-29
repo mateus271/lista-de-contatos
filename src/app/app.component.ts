@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactModalComponent } from './features/contact-modal/contact-modal.component';
 import { ContactService } from './core/services/contact.service';
@@ -15,7 +15,9 @@ export class AppComponent {
   title = "Agenda - Grupo II";
   icon = "chevron_forward";
   displayToolsMenu:boolean=true;
-  constructor(private matDialog: MatDialog,
+  searchValue:string='';
+  
+ constructor(private matDialog: MatDialog,
      private contactService: ContactService,
     private router:Router,
   ) {
@@ -32,7 +34,7 @@ export class AppComponent {
     });
     }
 
-
+   
   public addNewContact(): void {
     this.matDialog.open(ContactModalComponent, {
       data: {

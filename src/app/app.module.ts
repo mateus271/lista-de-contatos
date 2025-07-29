@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     CommonModule,
     FeaturesModule,
-    MaterialModule
+    MaterialModule,FormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

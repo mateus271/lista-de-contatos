@@ -30,11 +30,16 @@ mat-sidenav-container {
         mat-form-field {
           min-width: 310px;
         }
+        
       }
     }
-
-    .content-router {
-      border: 1px dashed blue;
-    }
+    .info-search{
+          text-align: center;
+          height: 30px;
+         padding: 10px 0 10px 0;
+         font-size: 24px;
+         margin-bottom: 20px;
+        }
+   
   }
 }
