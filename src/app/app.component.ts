@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactModalComponent } from './features/contact-modal/contact-modal.component';
 import { ContactService } from './core/services/contact.service';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,8 @@ export class AppComponent {
   displayToolsMenu:boolean=true;
   constructor(private matDialog: MatDialog,
      private contactService: ContactService,
-    private router:Router) {
+    private router:Router,
+  ) {
       
       this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -32,7 +34,7 @@ export class AppComponent {
 
 
   public addNewContact(): void {
-    const dialogRef=this.matDialog.open(ContactModalComponent, {
+    this.matDialog.open(ContactModalComponent, {
       data: {
         edit: false
       },

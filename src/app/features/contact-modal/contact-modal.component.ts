@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContactService } from '../../core/services/contact.service';
 import { Contact } from '../../models/interfaces/contact';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-contact-modal',
   standalone: false,
@@ -25,7 +25,8 @@ export class ContactModalComponent implements OnInit {
     public data: { edit: boolean, contactId?: number },
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private snackBar:MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +54,7 @@ export class ContactModalComponent implements OnInit {
 
       this.contactService.updateContact(updatedContact).subscribe(response => {
         console.log("resposta da atualização", response);
+       
       });
     }
 
@@ -66,6 +68,9 @@ export class ContactModalComponent implements OnInit {
 
     this.contactService.addContact(newContact).subscribe(response => {
       console.log("resposta da atualização", response);
+      this.snackBar.open("Novo Contato adicionado!","Fechar",{duration:3000});
+      this.contactForm.reset();
+     
     });
   }
   closeByBtn(){
