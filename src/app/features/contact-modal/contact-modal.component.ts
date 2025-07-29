@@ -61,11 +61,14 @@ export class ContactModalComponent implements OnInit {
 
   public addContact(): void {
     const { name, email, phone } = this.contactForm.value;
-
+   
     const newContact: Partial<Contact> = { name, email, phone };
 
     this.contactService.addContact(newContact).subscribe(response => {
       console.log("resposta da atualização", response);
     });
+  }
+  closeByBtn(){
+     this.dialogRef.close();
   }
 }

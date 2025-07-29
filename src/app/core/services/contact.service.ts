@@ -16,7 +16,11 @@ export class ContactService {
 
   private readonly API = "http://localhost:3000/contacts";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
+ 
+  
 
   public getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.API);
@@ -27,8 +31,10 @@ export class ContactService {
   }
 
   public addContact(contact: Partial<Contact>): Observable<Contact> {
-    const id = this.highestId + 1;
-    return this.http.post<Contact>(this.API, contact);
+    const gerarId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
+    const fullContact={id:gerarId,...contact}
+    console.log(fullContact)
+    return this.http.post<Contact>(this.API, fullContact);
   }
 
   public updateContact(contact: Contact): Observable<Contact> {

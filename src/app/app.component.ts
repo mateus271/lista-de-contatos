@@ -16,13 +16,14 @@ export class AppComponent {
   constructor(private matDialog: MatDialog, private contactService: ContactService) {}
 
   public addNewContact(): void {
-    this.matDialog.open(ContactModalComponent, {
+    const dialogRef=this.matDialog.open(ContactModalComponent, {
       data: {
         edit: false
       },
       width: "500px",
       height: "500px"
     });
+    
   }
 
   public handleKeydown($event: Event) {

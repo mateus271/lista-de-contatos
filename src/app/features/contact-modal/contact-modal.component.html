@@ -1,6 +1,12 @@
 <div>
-  <p *ngIf="data.edit">Editar Contato:</p>
-  <p *ngIf="!data.edit">Criar Contato:</p>
+  <div class="headerDialog">
+    <p *ngIf="data.edit">Editar Contato:</p>
+    <p *ngIf="!data.edit">Criar Contato:</p>
+     <button mat-icon-button class="closeBtn" (click)="closeByBtn()">
+          <mat-icon>close</mat-icon>
+      </button>
+  </div>
+   
 
   <form [formGroup]="contactForm">
     <mat-form-field appearance="outline">
@@ -16,13 +22,13 @@
       <input matInput type="tel" formControlName="phone" [mask]="phoneMask">
     </mat-form-field>
   </form>
-
+ 
   <button *ngIf="data.edit" class="no-box-shadow" mat-fab extended (click)="saveChanges()">
     <mat-icon fontSet="material-icons-outlined">save</mat-icon>
     Salvar alterações
   </button>
 
-  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended>
+  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended (click)="addContact()">
     <mat-icon fontSet="material-icons-outlined">add_box</mat-icon>
     Criar contato
   </button>
