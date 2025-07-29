@@ -1,3 +1,14 @@
-<div class="contact-list">
+<!-- <div class="contact-list">
   <app-contact-card *ngFor="let contact of contactService.filteredContactsArray" [contact]="contact"></app-contact-card>
+</div> -->
+<div class="contact-list">
+  <div *ngFor="let group of groupedContacts" class="letter-group">
+    <h2 class="letter-header">{{ group.initial }}</h2>
+    <div class="contact-cards">
+      <app-contact-card
+        *ngFor="let contact of group.contacts"
+        [contact]="contact"
+      ></app-contact-card>
+    </div>
+  </div>
 </div>

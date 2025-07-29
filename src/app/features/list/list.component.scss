@@ -6,3 +6,27 @@
   overflow-y: scroll;
   height: calc(100vh - 112px);
 }
+
+// .contact-list {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+//   padding: 16px;
+// }
+
+.letter-group {
+  padding-bottom: 8px;
+}
+
+.letter-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
