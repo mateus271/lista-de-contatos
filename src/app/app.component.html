@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav fixedInViewport="true" mode="side" opened="" #sidenav>
-    <button mat-button routerLink="home">Início</button> <br>
+   
     <button mat-button routerLink="list">Listar Contatos</button> <br>
     <button mat-button routerLink="about">Sobre</button> <br>
   </mat-sidenav>
@@ -15,7 +15,7 @@
         <span class="title">Agenda - Grupo II</span>
       </div>
 
-      <div class="search-input-and-add-button-container">
+      <div *ngIf="displayToolsMenu" class="search-input-and-add-button-container">
         <mat-form-field class="contact-search-input" appearance="outline" (keydown)="handleKeydown($event)">
           <mat-icon matPrefix fontSet="material-icons-outlined">search</mat-icon>
           <mat-label>Pesquisar</mat-label>
