@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:lista-de-contatos": "node dist/lista-de-contatos/server/server.mjs",
-    "json-server": "json-server --watch db.json --port 3000"
+    "json-server": "json-server --watch src/backend/db.json --port 3000"
   },
   "private": true,
   "dependencies": {
