@@ -26,7 +26,7 @@ export class ContactModalComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { edit: boolean; contactId?: number },
+    public data: { edit: boolean; contactId?: string },
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
     private contactService: ContactService,
@@ -52,7 +52,7 @@ export class ContactModalComponent implements OnInit {
       const { name, email, phone } = this.contactForm.value;
 
       const updatedContact: Contact = {
-        id: this.data.contactId,
+        id: this.data.contactId!,
         name,
         email,
         phone,

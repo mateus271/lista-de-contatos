@@ -10,7 +10,7 @@ export class ContactService {
   public searchParam = new BehaviorSubject<string>("");
   public filteredContactsArray: Contact[] = [];
 
-  private highestId: number = 0;
+  // private highestId: number = 0;
   private originalContactsArray: Contact[] = [];
   private originalContactsArray$ = new BehaviorSubject<Contact[]>([]);
 
@@ -26,7 +26,7 @@ export class ContactService {
     return this.http.get<Contact[]>(this.API);
   }
 
-  public getContactById(id: number): Observable<Contact> {
+  public getContactById(id: string): Observable<Contact> {
     return this.http.get<Contact>(`${this.API}/${id}`);
   }
 
@@ -41,7 +41,7 @@ export class ContactService {
     return this.http.patch<Contact>(`${this.API}/${contact.id}`, contact);
   }
 
-  public deleteContact(id: number): Observable<any> {
+  public deleteContact(id: string): Observable<any> {
     return this.http.delete(`${this.API}/${id}`);
   }
 
@@ -65,15 +65,15 @@ export class ContactService {
     this.originalContactsArray$.next(data);
   }
 
-  public findContactById(contactId: number): Contact | undefined {
+  public findContactById(contactId: string): Contact | undefined {
     return this.originalContactsArray.find(contact => contact.id === contactId);
   }
 
-  private setHighestId(): void {
-    const contactWithHighestId = this.originalContactsArray.reduce((previousValue, currentValue) => {
-      return (previousValue && previousValue.id > currentValue.id) ? previousValue : currentValue
-    });
+  // private setHighestId(): void {
+  //   const contactWithHighestId = this.originalContactsArray.reduce((previousValue, currentValue) => {
+  //     return (previousValue && previousValue.id > currentValue.id) ? previousValue : currentValue
+  //   });
 
-    this.highestId = contactWithHighestId.id;
-  }
+  //   this.highestId = contactWithHighestId.id;
+  // }
 }

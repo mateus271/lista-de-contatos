@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  openModal(contactId?: number): void {
+  openModal(contactId?: string): void {
     const dialogRef = this.dialog.open(ContactModalComponent, {
       data: {
         edit: !!contactId,
