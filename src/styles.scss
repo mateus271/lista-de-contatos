@@ -18,7 +18,21 @@ $material-icons-font-path: "material-icons/iconfont/";
     small-container-elevation-shadow: none,
     small-focus-container-elevation-shadow: none,
     small-hover-container-elevation-shadow: none,
-    small-pressed-container-elevation-shadow: none
+    small-pressed-container-elevation-shadow: none,
+    container-color: #303030,
+  ));
+
+
+  @include mat.form-field-overrides((
+    outlined-input-text-placeholder-color: #777777,
+    leading-icon-color: #777777,
+    filled-hover-label-text-color: #777777,
+    outlined-hover-label-text-color: #777777,
+    outlined-label-text-color: #777777,
+    outlined-outline-color: #777777,
+    outlined-hover-outline-color: #777777,
+    outlined-focus-outline-color: #C4F120,
+    outlined-focus-label-text-color: #C4F120
   ));
 }
 
@@ -37,3 +51,19 @@ mat-form-field.contact-search-input {
   }
 }
 
+app-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+  width: 99.6%;
+}
+
+mat-sidenav {
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}

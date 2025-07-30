@@ -1,8 +1,12 @@
 <mat-sidenav-container>
   <mat-sidenav fixedInViewport="true" mode="side" opened="" #sidenav>
+    <button class="no-box-shadow" mat-fab routerLink="list" [ngClass]="{ 'active': routeTitle === 'Lista de contatos' }">
+      <mat-icon fontSet="material-icons-outlined" [ngClass]="{ 'active': routeTitle === 'Sobre o aplicativo' }">person</mat-icon>
+    </button>
 
-    <button mat-button routerLink="list">Listar Contatos</button> <br>
-    <button mat-button routerLink="about">Sobre</button> <br>
+    <button class="no-box-shadow" mat-fab routerLink="about">
+      <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+    </button>
   </mat-sidenav>
 
   <mat-sidenav-content> <!--conteúdo -->
@@ -19,9 +23,8 @@
         <mat-form-field class="contact-search-input" appearance="outline" (keydown)="handleKeydown($event)">
           <mat-icon matPrefix fontSet="material-icons-outlined">search</mat-icon>
           <mat-label>Pesquisar</mat-label>
-          
+
           <input matInput  type="text" [(ngModel)]="searchValue">
-         
         </mat-form-field>
 
         <button class="no-box-shadow" mat-fab extended (click)="addNewContact()">
@@ -30,11 +33,17 @@
         </button>
       </div>
     </mat-toolbar>
+
+    <div class="main-content-container">
+      <h1 class="page-title">{{ routeTitle }}</h1>
+
       <div  class="info-search">
         <p *ngIf="searchValue">Buscando: <strong>{{searchValue}}...</strong></p>
       </div>
-    <div class="content-router">
-      <router-outlet></router-outlet> <br> <br> <br>
+
+      <div class="content-router">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
