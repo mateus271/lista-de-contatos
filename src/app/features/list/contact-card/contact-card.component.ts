@@ -39,11 +39,7 @@ export class ContactCardComponent {
 
     if (confirmed) {
       this.contactService.deleteContact(contactId).subscribe(() => {
-        this.contactService.getContacts().subscribe((contacts) => {
-          this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-            a.name.localeCompare(b.name)
-          );;
-        });
+        this.contactService.updateListsAfterEvent();
       });
     }
   }

@@ -68,4 +68,14 @@ export class ContactService {
     this.searchParam.next("");
     this.filteredContactsArray = [...this.originalContactsArray];
   }
+
+  public updateListsAfterEvent(): void {
+    this.getContacts().subscribe((contacts) => {
+      this.filteredContactsArray = contacts.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      this.setOriginalContactsArrayData(contacts);
+    });
+  }
 }

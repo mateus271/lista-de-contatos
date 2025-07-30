@@ -23,13 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   reloadContacts(): void {
-    this.contactService.getContacts().subscribe((contacts) => {
-      this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
-
-      this.contactService.setOriginalContactsArrayData(contacts);
-    });
+    this.contactService.updateListsAfterEvent();
   }
 
   openModal(contactId?: string): void {
