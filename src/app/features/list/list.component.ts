@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../../models/interfaces/contact';
 import { ContactService } from '../../core/services/contact.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactModalComponent } from '../contact-modal/contact-modal.component';
 
 @Component({
   selector: 'app-list',
@@ -12,12 +13,36 @@ import { ContactService } from '../../core/services/contact.service';
 export class ListComponent implements OnInit {
   contacts: Contact[] = [];
 
-  constructor(public contactService: ContactService) {}
+  constructor(
+    public contactService: ContactService,
+    private dialog: MatDialog
+  ) {}
 
-  ngOnInit() {
-    this.contactService.getContacts().subscribe((contacts)=> {
-      this.contactService.filteredContactsArray = contacts.sort((a, b) => a.name.localeCompare(b.name));
+  ngOnInit(): void {
+    this.reloadContacts();
+  }
+
+  reloadContacts(): void {
+    this.contactService.getContacts().subscribe((contacts) => {
+      this.contactService.filteredContactsArray = contacts.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
       this.contactService.setOriginalContactsArrayData(contacts);
+    });
+  }
+
+  openModal(contactId?: number): void {
+    const dialogRef = this.dialog.open(ContactModalComponent, {
+      data: {
+        edit: !!contactId,
+        contactId: contactId,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.reloadContacts();
+      }
     });
   }
 }

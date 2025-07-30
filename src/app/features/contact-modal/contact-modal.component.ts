@@ -1,37 +1,43 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ContactService } from '../../core/services/contact.service';
 import { Contact } from '../../models/interfaces/contact';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-contact-modal',
   standalone: false,
   templateUrl: './contact-modal.component.html',
-  styleUrl: './contact-modal.component.scss'
+  styleUrl: './contact-modal.component.scss',
 })
 export class ContactModalComponent implements OnInit {
   public contactBeingEdited: Contact | undefined;
-  public phoneMask: string = "(00) 00000-0000";
+  public phoneMask: string = '(00) 00000-0000';
 
   public contactForm: FormGroup = new FormGroup({
-    name: new FormControl(""),
-    email: new FormControl(""),
-    phone: new FormControl("")
-  })
+    name: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl(''),
+  });
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { edit: boolean, contactId?: number },
+    public data: { edit: boolean; contactId?: number },
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
     private contactService: ContactService,
-    private snackBar:MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     if (this.data.edit && this.data.contactId) {
-      this.contactBeingEdited = this.contactService.findContactById(this.data.contactId);
+      this.contactBeingEdited = this.contactService.findContactById(
+        this.data.contactId
+      );
 
       this.contactForm.patchValue({
         name: this.contactBeingEdited?.name,
@@ -52,28 +58,32 @@ export class ContactModalComponent implements OnInit {
         phone,
       };
 
-      this.contactService.updateContact(updatedContact).subscribe(response => {
-        console.log("resposta da atualização", response);
-       
-      });
+      this.contactService
+        .updateContact(updatedContact)
+        .subscribe((response) => {
+          console.log('resposta da atualização', response);
+        });
     }
 
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   public addContact(): void {
     const { name, email, phone } = this.contactForm.value;
-   
+
     const newContact: Partial<Contact> = { name, email, phone };
 
-    this.contactService.addContact(newContact).subscribe(response => {
-      console.log("resposta da atualização", response);
-      this.snackBar.open("Novo Contato adicionado!","Fechar",{duration:3000});
+    this.contactService.addContact(newContact).subscribe((response) => {
+      console.log('resposta da atualização', response);
+      this.snackBar.open('Novo Contato adicionado!', 'Fechar', {
+        duration: 3000,
+      });
       this.contactForm.reset();
-     
+      this.dialogRef.close(true);
     });
   }
-  closeByBtn(){
-     this.dialogRef.close();
+
+  closeByBtn() {
+    this.dialogRef.close();
   }
 }
