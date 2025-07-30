@@ -1,11 +1,23 @@
 .container{
-     text-align: center;
-}
-.headerDialog{
+  text-align: center;
+
+  .headerDialog{
     width: 80%;
     margin: 20px auto;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+
+    .capitalize-input {
+      text-transform: capitalize;
+    }
+  }
 }
+
 

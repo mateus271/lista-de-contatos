@@ -6,29 +6,57 @@
           <mat-icon>close</mat-icon>
       </button>
   </div> <br><br>
-   
+
 
   <form [formGroup]="contactForm" >
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
-      <input matInput type="text" formControlName="name">
-    </mat-form-field> <br>
+
+      <input matInput class="capitalize-input" type="text" formControlName="name">
+
+      <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+        Campo obrigatório.
+      </mat-error>
+
+      <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">
+        O nome deve ter 2 caracteres ou mais.
+      </mat-error>
+    </mat-form-field><br>
+
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
+
       <input matInput type="email" formControlName="email">
+
+      <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+        O email é obrigatório.
+      </mat-error>
+
+      <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+        Formato de email inválido.
+      </mat-error>
     </mat-form-field> <br>
+
     <mat-form-field appearance="outline">
       <mat-label>Telefone</mat-label>
       <input matInput type="tel" formControlName="phone" [mask]="phoneMask">
+
+      <mat-error *ngIf="contactForm.get('phone')?.hasError('required')">
+        O telefone é obrigatório.
+      </mat-error>
+
+      <mat-error *ngIf="contactForm.get('phone')?.hasError('minlength')">
+        O telefone deve ter ao menos 10 dígitos (incluindo DDD)
+      </mat-error>
     </mat-form-field>
   </form> <br><br>
- 
-  <button *ngIf="data.edit" class="no-box-shadow" mat-fab extended (click)="saveChanges()">
+
+  <button *ngIf="data.edit" class="no-box-shadow" mat-fab extended (click)="saveChanges()" [disabled]="contactForm.invalid && data.edit">
     <mat-icon fontSet="material-icons-outlined">save</mat-icon>
     Salvar alterações
   </button>
 
-  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended (click)="addContact()">
+  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended (click)="addContact()" [disabled]="contactForm.invalid && !data.edit">
     <mat-icon fontSet="material-icons-outlined">add_box</mat-icon>
     Criar contato
   </button>

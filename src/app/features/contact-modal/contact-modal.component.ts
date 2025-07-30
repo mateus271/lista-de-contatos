@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -16,18 +16,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ContactModalComponent implements OnInit {
   public contactBeingEdited: Contact | undefined;
-  public phoneMask: string = '(00) 00000-0000';
+  public phoneMask: string = '(00) 00000-0000||(00) 0000-0000';
 
   public contactForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
+    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('',  [Validators.required,  Validators.minLength(10)]),
   });
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { edit: boolean; contactId?: string },
-    private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
     private contactService: ContactService,
     private snackBar: MatSnackBar
@@ -63,17 +62,20 @@ export class ContactModalComponent implements OnInit {
           duration: 3000,
         });
 
+        this.reloadContacts();
+
         this.clearSearchAndCloseModal();
       });
     }
 
   }
 
-    public reloadContacts(): void {
+  public reloadContacts(): void {
     this.contactService.getContacts().subscribe((contacts) => {
       this.contactService.filteredContactsArray = contacts.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
+
       this.contactService.setOriginalContactsArrayData(contacts);
     });
   }
@@ -88,11 +90,7 @@ export class ContactModalComponent implements OnInit {
         duration: 3000,
       });
 
-      this.contactService.getContacts().subscribe((contacts) => {
-        this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );;
-      });
+      this.reloadContacts();
 
       this.clearSearchAndCloseModal();
     });
