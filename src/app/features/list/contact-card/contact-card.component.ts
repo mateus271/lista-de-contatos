@@ -15,7 +15,7 @@ export class ContactCardComponent {
 
   constructor(private matDialog: MatDialog) {}
 
-  public editContact(contactId: number) {
+  public editContact(contactId: string) {
     this.matDialog.open(ContactModalComponent, {
       data: {
         edit: true,

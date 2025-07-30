@@ -58,14 +58,15 @@ export class ContactModalComponent implements OnInit {
         phone,
       };
 
-      this.contactService
-        .updateContact(updatedContact)
-        .subscribe((response) => {
-          console.log('resposta da atualização', response);
+      this.contactService.updateContact(updatedContact).subscribe(() => {
+        this.snackBar.open('Informações do contato foram atualizadas!', 'Fechar', {
+          duration: 3000,
         });
+
+        this.clearSearchAndCloseModal();
+      });
     }
 
-    this.dialogRef.close(true);
   }
 
   public addContact(): void {
@@ -73,18 +74,26 @@ export class ContactModalComponent implements OnInit {
 
     const newContact: Partial<Contact> = { name, email, phone };
 
-    this.contactService.addContact(newContact).subscribe((response) => {
-      console.log('resposta da atualização', response);
+    this.contactService.addContact(newContact).subscribe(() => {
       this.snackBar.open('Novo Contato adicionado!', 'Fechar', {
         duration: 3000,
       });
-      this.contactService.clearSearch();
-      this.contactForm.reset();
-      this.dialogRef.close(true);
+
+      this.contactService.getContacts().subscribe((contacts) => {
+        this.contactService.filteredContactsArray = contacts;
+      });
+
+      this.clearSearchAndCloseModal();
     });
   }
 
-  closeByBtn() {
+  private clearSearchAndCloseModal(): void {
+    this.contactService.clearSearch();
+
+    this.dialogRef.close(true);
+  }
+
+  closeByBtn(): void {
     this.dialogRef.close();
   }
 }
