@@ -1,0 +1,152 @@
+[33mcommit f0936183084f8683907746fbfc51644f5bcbfdde[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlista1[m[33m, [m[1;31morigin/lista1[m[33m)[m
+Author: tiagomercuri <tiagomercuri@gmail.com>
+Date:   Tue Jul 29 23:38:46 2025 -0300
+
+    melhorar busca2
+
+[33mcommit c7e4790a6a85b89026d488d6a3dd2b54dc40cc86[m
+Author: tiagomercuri <tiagomercuri@gmail.com>
+Date:   Tue Jul 29 23:28:10 2025 -0300
+
+    limpar busca
+
+[33mcommit 0ea28f65bb3a97ba76e56d5d8fc97bc0aaaa886e[m
+Author: tiagomercuri <tiagomercuri@gmail.com>
+Date:   Tue Jul 29 23:21:31 2025 -0300
+
+    corrigido ID como string
+
+[33mcommit 413373fd2c4ade5b843e9b8058729d6c9598c19c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 6271584 d4dede3
+Author: Mateus Felipe Bullerjahn <72828057+mateus271@users.noreply.github.com>
+Date:   Tue Jul 29 22:26:32 2025 -0300
+
+    Merge pull request #3 from mateus271/feature/atualizacaoEdicao
+    
+    feat: adiciona atualizacao dos contatos pós edicao
+
+[33mcommit d4dede30fe3467cdba1870fe91570d93b84bda90[m[33m ([m[1;31morigin/feature/atualizacaoEdicao[m[33m)[m
+Author: Hugo Patricio <hugopatricio51@gmail.com>
+Date:   Tue Jul 29 22:13:37 2025 -0300
+
+    feat: adiciona atualizacao dos contatos pós edicao
+
+[33mcommit 6271584b2c23b33eea14f1310652fac602d2d895[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Tue Jul 29 16:36:10 2025 -0300
+
+    adicionado info de busca no layout
+
+[33mcommit c01c0690c0aeeebd196e48b1d297c4eb1e7c4249[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Tue Jul 29 15:12:58 2025 -0300
+
+    adicionado snackbar em novocontato
+
+[33mcommit ef4b4497bd4c5eec757cc01234733532f141a30d[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Tue Jul 29 14:27:20 2025 -0300
+
+    ajustado rotas e display de busca e novo contato no menu
+
+[33mcommit 04d42296e3429bf3deef3086e1157f2462727706[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Tue Jul 29 13:53:16 2025 -0300
+
+    corrigido push do layout,adicionado botao de fechar do modal e criado função addContact
+
+[33mcommit 2bb384c8c8868be9062cd862cf08494ce4e3127b[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Mon Jul 28 21:49:48 2025 -0300
+
+    Ajuste na atribuição e recuperação de dados do form
+
+[33mcommit 506b48ce871df8ac5c7632af884d2b6a3667ac9a[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Mon Jul 28 21:21:02 2025 -0300
+
+    Atualização do tipo de input para telefone
+
+[33mcommit 915906ae879fb50121ad7908d70a92cb7de68f9f[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Mon Jul 28 19:53:19 2025 -0300
+
+    Fix do erro de sass
+
+[33mcommit f693723dd335e1b099b8215f3ba6bc36c6965383[m
+Merge: 27bf65b 47e3acf
+Author: Mateus Felipe Bullerjahn <72828057+mateus271@users.noreply.github.com>
+Date:   Sun Jul 27 12:03:54 2025 -0300
+
+    Merge pull request #2 from mateus271/listagem
+    
+    Listagem
+
+[33mcommit 47e3acfd1fb7ee1ba87806bb8e6070f8b68c6745[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Sun Jul 27 12:02:27 2025 -0300
+
+    Edição e adição de contatos criada, necessário atualizar lista de contatos. Usando ngx mask e criado pipe para formatar número de telefone.
+
+[33mcommit 2e2b89c751bae7b362d0c870155d13cedf76d2bf[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Sun Jul 27 01:28:07 2025 -0300
+
+    Array ordenado alfabeticamente ao ser buscado, criado input de pesquisa
+
+[33mcommit 27bf65b6b7b38881babd0287036f0c8551349aaa[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Sat Jul 26 21:50:40 2025 -0300
+
+    criado pasta para o backend em src
+
+[33mcommit b9b2bdeeb9a5454e60647f6b8fefcdc91cf19fcf[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Sat Jul 26 21:39:21 2025 -0300
+
+    reordenado modulos e inclusão de card
+
+[33mcommit cdee37c57f1dd6c4bd929026f5083addc26b806c[m
+Author: Hugo Patricio <hugopatricio51@gmail.com>
+Date:   Sat Jul 26 16:06:16 2025 -0300
+
+    feat: adiciona uso do json server
+
+[33mcommit 1637d78593a51685f4b4f22f9052b4a7f0eeefa0[m
+Merge: 67f41b5 b0fc61d
+Author: Wendell <47835943+Wendell2130@users.noreply.github.com>
+Date:   Fri Jul 25 13:36:05 2025 -0300
+
+    Merge pull request #1 from mateus271/layout
+    
+    Layout nerge
+
+[33mcommit b0fc61d6b8aac2b6a3368f510d4b8c7353b91bb4[m[33m ([m[1;31morigin/layout[m[33m)[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Fri Jul 25 11:39:51 2025 -0300
+
+    layout inicial e rotas
+
+[33mcommit e02ac6187f8884b29e87284ee673e4e69061d037[m
+Author: Wendell D <wendell2009@hotmail.com>
+Date:   Fri Jul 25 10:00:23 2025 -0300
+
+    estrutura de pastas inicial
+
+[33mcommit 67f41b5a93fdb0384ff8075f3e1c3e45da539ced[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Fri Jul 25 00:37:33 2025 -0300
+
+    Angular material adicionado
+
+[33mcommit 30ee98110b4e05c78cbe6f5fbf48ec000ec82f75[m
+Author: Mateus Bullerjahn <mateusfb271@gmail.com>
+Date:   Fri Jul 25 00:33:47 2025 -0300
+
+    Inicialização do angular
+
+[33mcommit c1b0600c83ac10b07feb901e8b0a1dc8c7f78413[m
+Author: Mateus Felipe Bullerjahn <72828057+mateus271@users.noreply.github.com>
+Date:   Thu Jul 24 23:11:20 2025 -0300
+
+    Initial commit
