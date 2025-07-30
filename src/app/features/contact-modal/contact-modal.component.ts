@@ -27,7 +27,6 @@ export class ContactModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { edit: boolean; contactId?: string },
-    private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
     private contactService: ContactService,
     private snackBar: MatSnackBar
@@ -63,17 +62,20 @@ export class ContactModalComponent implements OnInit {
           duration: 3000,
         });
 
+        this.reloadContacts();
+
         this.clearSearchAndCloseModal();
       });
     }
 
   }
 
-    public reloadContacts(): void {
+  public reloadContacts(): void {
     this.contactService.getContacts().subscribe((contacts) => {
       this.contactService.filteredContactsArray = contacts.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
+
       this.contactService.setOriginalContactsArrayData(contacts);
     });
   }
@@ -88,11 +90,7 @@ export class ContactModalComponent implements OnInit {
         duration: 3000,
       });
 
-      this.contactService.getContacts().subscribe((contacts) => {
-        this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );;
-      });
+      this.reloadContacts();
 
       this.clearSearchAndCloseModal();
     });

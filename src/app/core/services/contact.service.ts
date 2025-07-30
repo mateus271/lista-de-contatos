@@ -28,7 +28,7 @@ export class ContactService {
 
   public addContact(contact: Partial<Contact>): Observable<Contact> {
     const gerarId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
-    const fullContact={ id: gerarId, ...contact };
+    const fullContact = { id: gerarId, ...contact };
     return this.http.post<Contact>(this.API, fullContact);
   }
 
