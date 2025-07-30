@@ -90,7 +90,7 @@ export class ContactModalComponent implements OnInit {
       this.contactService.clearSearch();
       this.contactForm.reset();
       this.dialogRef.close(true);
-      this.reloadContacts();
+      window.location.reload();
     });
   }
 
