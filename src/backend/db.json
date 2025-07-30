@@ -1,18 +1,6 @@
 {
   "contacts": [
     {
-      "id": "7a2f",
-      "name": "Luna",
-      "email": "luna.smith@outlook.com",
-      "phone": "54983217654"
-    },
-    {
-      "id": "4b9e",
-      "name": "Rafael",
-      "email": "rafael.gomes@yahoo.com",
-      "phone": "21975436821"
-    },
-    {
       "id": "1c8d",
       "name": "Sophia",
       "email": "sophia.martins@gmail.com",
@@ -38,7 +26,7 @@
     },
     {
       "id": "2n4p",
-      "name": "Alice",
+      "name": "Alice Oliveira",
       "email": "alice.oliveira@live.com",
       "phone": "21999887766"
     },
@@ -55,10 +43,10 @@
       "phone": "47988776655"
     },
     {
-      "id": "0w9x",
-      "name": "Daniel",
-      "email": "daniel.alves@zoho.com",
-      "phone": "81977665544"
+      "id": "7452",
+      "name": "Dino Fernandes",
+      "email": "dino@silvassauro.com.br",
+      "phone": "19191019190"
     }
   ]
 }

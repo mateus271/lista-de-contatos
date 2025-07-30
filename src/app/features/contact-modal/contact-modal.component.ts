@@ -71,13 +71,7 @@ export class ContactModalComponent implements OnInit {
   }
 
   public reloadContacts(): void {
-    this.contactService.getContacts().subscribe((contacts) => {
-      this.contactService.filteredContactsArray = contacts.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
-
-      this.contactService.setOriginalContactsArrayData(contacts);
-    });
+    this.contactService.updateListsAfterEvent();
   }
 
   public addContact(): void {
