@@ -1,3 +1,14 @@
 <div class="contact-list">
-  <app-contact-card *ngFor="let contact of contactService.filteredContactsArray" [contact]="contact"></app-contact-card>
+  <div *ngFor="let contact of contactService.filteredContactsArray">
+    <mat-card>
+      <mat-card-title>{{ contact.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Email: {{ contact.email }}</p>
+        <p>Telefone: {{ contact.phone }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openModal(contact.id)">Editar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
