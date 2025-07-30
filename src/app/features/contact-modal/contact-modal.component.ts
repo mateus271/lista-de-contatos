@@ -68,6 +68,15 @@ export class ContactModalComponent implements OnInit {
     this.dialogRef.close(true);
   }
 
+    public reloadContacts(): void {
+    this.contactService.getContacts().subscribe((contacts) => {
+      this.contactService.filteredContactsArray = contacts.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      this.contactService.setOriginalContactsArrayData(contacts);
+    });
+  }
+
   public addContact(): void {
     const { name, email, phone } = this.contactForm.value;
 
@@ -81,6 +90,7 @@ export class ContactModalComponent implements OnInit {
       this.contactService.clearSearch();
       this.contactForm.reset();
       this.dialogRef.close(true);
+      this.reloadContacts();
     });
   }
 

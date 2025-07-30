@@ -45,4 +45,10 @@ export class ListComponent implements OnInit {
       }
     });
   }
+  
+  deleteContact(contactId: string): void {
+    this.contactService.deleteContact(contactId).subscribe(() => {
+      this.reloadContacts();
+    });
+  }
 }
