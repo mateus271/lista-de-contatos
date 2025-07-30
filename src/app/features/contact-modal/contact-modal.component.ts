@@ -78,6 +78,7 @@ export class ContactModalComponent implements OnInit {
       this.snackBar.open('Novo Contato adicionado!', 'Fechar', {
         duration: 3000,
       });
+      this.contactService.clearSearch();
       this.contactForm.reset();
       this.dialogRef.close(true);
     });
