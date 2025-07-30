@@ -69,6 +69,11 @@ export class ContactService {
     return this.originalContactsArray.find(contact => contact.id === contactId);
   }
 
+  public clearSearch(): void {
+    this.searchParam.next("");
+    this.filteredContactsArray = [...this.originalContactsArray];
+  }
+
   // private setHighestId(): void {
   //   const contactWithHighestId = this.originalContactsArray.reduce((previousValue, currentValue) => {
   //     return (previousValue && previousValue.id > currentValue.id) ? previousValue : currentValue
