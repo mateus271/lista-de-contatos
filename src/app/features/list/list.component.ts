@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
       this.contactService.filteredContactsArray = contacts.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
+
       this.contactService.setOriginalContactsArrayData(contacts);
     });
   }
@@ -45,7 +46,7 @@ export class ListComponent implements OnInit {
       }
     });
   }
-  
+
   deleteContact(contactId: string): void {
     this.contactService.deleteContact(contactId).subscribe(() => {
       this.reloadContacts();
