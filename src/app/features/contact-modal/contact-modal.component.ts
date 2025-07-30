@@ -80,7 +80,9 @@ export class ContactModalComponent implements OnInit {
       });
 
       this.contactService.getContacts().subscribe((contacts) => {
-        this.contactService.filteredContactsArray = contacts;
+        this.contactService.filteredContactsArray = contacts.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );;
       });
 
       this.clearSearchAndCloseModal();
