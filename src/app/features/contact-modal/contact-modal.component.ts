@@ -26,7 +26,7 @@ export class ContactModalComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { edit: boolean; contactId?: number },
+    public data: { edit: boolean; contactId?: string },
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<ContactModalComponent>,
     private contactService: ContactService,
@@ -52,20 +52,30 @@ export class ContactModalComponent implements OnInit {
       const { name, email, phone } = this.contactForm.value;
 
       const updatedContact: Contact = {
-        id: this.data.contactId,
+        id: this.data.contactId!,
         name,
         email,
         phone,
       };
 
-      this.contactService
-        .updateContact(updatedContact)
-        .subscribe((response) => {
-          console.log('resposta da atualização', response);
+      this.contactService.updateContact(updatedContact).subscribe(() => {
+        this.snackBar.open('Informações do contato foram atualizadas!', 'Fechar', {
+          duration: 3000,
         });
+
+        this.clearSearchAndCloseModal();
+      });
     }
 
-    this.dialogRef.close(true);
+  }
+
+    public reloadContacts(): void {
+    this.contactService.getContacts().subscribe((contacts) => {
+      this.contactService.filteredContactsArray = contacts.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      this.contactService.setOriginalContactsArrayData(contacts);
+    });
   }
 
   public addContact(): void {
@@ -73,17 +83,28 @@ export class ContactModalComponent implements OnInit {
 
     const newContact: Partial<Contact> = { name, email, phone };
 
-    this.contactService.addContact(newContact).subscribe((response) => {
-      console.log('resposta da atualização', response);
+    this.contactService.addContact(newContact).subscribe(() => {
       this.snackBar.open('Novo Contato adicionado!', 'Fechar', {
         duration: 3000,
       });
-      this.contactForm.reset();
-      this.dialogRef.close(true);
+
+      this.contactService.getContacts().subscribe((contacts) => {
+        this.contactService.filteredContactsArray = contacts.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );;
+      });
+
+      this.clearSearchAndCloseModal();
     });
   }
 
-  closeByBtn() {
+  private clearSearchAndCloseModal(): void {
+    this.contactService.clearSearch();
+
+    this.dialogRef.close(true);
+  }
+
+  closeByBtn(): void {
     this.dialogRef.close();
   }
 }

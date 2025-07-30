@@ -10,30 +10,25 @@ export class ContactService {
   public searchParam = new BehaviorSubject<string>("");
   public filteredContactsArray: Contact[] = [];
 
-  private highestId: number = 0;
+  // private highestId: number = 0;
   private originalContactsArray: Contact[] = [];
   private originalContactsArray$ = new BehaviorSubject<Contact[]>([]);
 
   private readonly API = "http://localhost:3000/contacts";
 
-  constructor(private http: HttpClient) {
-
-  }
- 
-  
+  constructor(private http: HttpClient) { }
 
   public getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.API);
   }
 
-  public getContactById(id: number): Observable<Contact> {
+  public getContactById(id: string): Observable<Contact> {
     return this.http.get<Contact>(`${this.API}/${id}`);
   }
 
   public addContact(contact: Partial<Contact>): Observable<Contact> {
     const gerarId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
-    const fullContact={id:gerarId,...contact}
-    console.log(fullContact)
+    const fullContact={ id: gerarId, ...contact };
     return this.http.post<Contact>(this.API, fullContact);
   }
 
@@ -41,7 +36,7 @@ export class ContactService {
     return this.http.patch<Contact>(`${this.API}/${contact.id}`, contact);
   }
 
-  public deleteContact(id: number): Observable<any> {
+  public deleteContact(id: string): Observable<any> {
     return this.http.delete(`${this.API}/${id}`);
   }
 
@@ -65,15 +60,12 @@ export class ContactService {
     this.originalContactsArray$.next(data);
   }
 
-  public findContactById(contactId: number): Contact | undefined {
+  public findContactById(contactId: string): Contact | undefined {
     return this.originalContactsArray.find(contact => contact.id === contactId);
   }
 
-  private setHighestId(): void {
-    const contactWithHighestId = this.originalContactsArray.reduce((previousValue, currentValue) => {
-      return (previousValue && previousValue.id > currentValue.id) ? previousValue : currentValue
-    });
-
-    this.highestId = contactWithHighestId.id;
+  public clearSearch(): void {
+    this.searchParam.next("");
+    this.filteredContactsArray = [...this.originalContactsArray];
   }
 }

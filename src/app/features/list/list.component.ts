@@ -27,11 +27,12 @@ export class ListComponent implements OnInit {
       this.contactService.filteredContactsArray = contacts.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
+
       this.contactService.setOriginalContactsArrayData(contacts);
     });
   }
 
-  openModal(contactId?: number): void {
+  openModal(contactId?: string): void {
     const dialogRef = this.dialog.open(ContactModalComponent, {
       data: {
         edit: !!contactId,
@@ -43,6 +44,12 @@ export class ListComponent implements OnInit {
       if (result) {
         this.reloadContacts();
       }
+    });
+  }
+
+  deleteContact(contactId: string): void {
+    this.contactService.deleteContact(contactId).subscribe(() => {
+      this.reloadContacts();
     });
   }
 }
