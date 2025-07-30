@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: column;
     padding: 10px 50px;
+
+    .capitalize-input {
+      text-transform: capitalize;
+    }
   }
 }
 

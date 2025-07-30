@@ -12,7 +12,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
 
-      <input matInput type="text" formControlName="name">
+      <input matInput class="capitalize-input" type="text" formControlName="name">
 
       <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
         Campo obrigatório.
@@ -45,8 +45,8 @@
         O telefone é obrigatório.
       </mat-error>
 
-      <mat-error *ngIf="contactForm.get('phone')?.hasError('pattern')">
-        Formato de telefone inválido.
+      <mat-error *ngIf="contactForm.get('phone')?.hasError('minlength')">
+        O telefone deve ter ao menos 10 dígitos (incluindo DDD)
       </mat-error>
     </mat-form-field>
   </form> <br><br>
