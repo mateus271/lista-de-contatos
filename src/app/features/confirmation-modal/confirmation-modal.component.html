@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="headerDialog">
+    <span class="phantom-span"></span>
+    <p>Confirmar exclusão de contato:</p>
+    <button mat-icon-button class="closeBtn" (click)="closeByBtn()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <p>Deseja mesmo excluir {{ contactBeingDeleted?.name }} da sua lista de contatos?</p>
+
+  <button class="no-box-shadow" mat-fab extended (click)="confirmDelete()">
+    <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+    Excluir
+  </button>
+</div>

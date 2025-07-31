@@ -8,6 +8,7 @@ import { ContactModalComponent } from './contact-modal/contact-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { SharedModule } from '../shared/shared.module';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     AboutComponent,
     ContactCardComponent,
     ContactModalComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     CommonModule,
