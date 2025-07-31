@@ -13,12 +13,13 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     .phantom-span {
       width: 40px;
     }
 
-    p {
+    h2 {
       margin: 0;
     }
   }
