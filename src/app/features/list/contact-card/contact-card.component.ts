@@ -38,9 +38,7 @@ export class ContactCardComponent {
     const confirmed = confirm('Tem certeza que deseja remover este contato?');
 
     if (confirmed) {
-      this.contactService.deleteContact(contactId).subscribe(() => {
-        this.contactService.updateListsAfterEvent();
-      });
+      this.contactService.deleteContact(contactId).subscribe();
     }
   }
 }
