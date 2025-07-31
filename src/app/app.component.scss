@@ -10,6 +10,11 @@ mat-sidenav-container {
     button {
       color: white;
     }
+
+    button.active {
+      background-color: #C4F120;
+      color: #1B1B1B;
+    }
   }
 
   mat-sidenav-content {
@@ -45,10 +50,11 @@ mat-sidenav-container {
     }
 
     .main-content-container {
-      height: calc(95% - 80px);
-      width: 97%;
+      height: calc(95% - 130px);
+      width: 94%;
       background-color: #1B1B1B;
       border-radius: 25px;
+      padding: 30px;
 
       .page-title {
         color: white;
@@ -61,11 +67,15 @@ mat-sidenav-container {
         height: 30px;
         padding: 10px 0 10px 0;
         font-size: 24px;
-        margin-bottom: 20px;
+
+        p {
+          color: white;
+          margin: 0;
+        }
       }
 
       .content-router {
-        height: calc(100% - 102px);
+        height: calc(100% - 162px);
 
         app-list {
           display: flex;

@@ -1,10 +1,10 @@
 <mat-sidenav-container>
   <mat-sidenav fixedInViewport="true" mode="side" opened="" #sidenav>
     <button class="no-box-shadow" mat-fab routerLink="list" [ngClass]="{ 'active': routeTitle === 'Lista de contatos' }">
-      <mat-icon fontSet="material-icons-outlined" [ngClass]="{ 'active': routeTitle === 'Sobre o aplicativo' }">person</mat-icon>
+      <mat-icon fontSet="material-icons-outlined" >person</mat-icon>
     </button>
 
-    <button class="no-box-shadow" mat-fab routerLink="about">
+    <button class="no-box-shadow" mat-fab routerLink="about" [ngClass]="{ 'active': routeTitle === 'Sobre o aplicativo' }">
       <mat-icon fontSet="material-icons-outlined">info</mat-icon>
     </button>
   </mat-sidenav>
