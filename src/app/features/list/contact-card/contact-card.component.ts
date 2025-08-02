@@ -3,6 +3,7 @@ import { Contact } from '../../../models/interfaces/contact';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactModalComponent } from '../../contact-modal/contact-modal.component';
 import { ContactService } from '../../../core/services/contact.service';
+import { ConfirmationModalComponent } from '../../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-contact-card',
@@ -35,12 +36,18 @@ export class ContactCardComponent {
   }
 
   public removeContact(contactId: string) {
-    const confirmed = confirm('Tem certeza que deseja remover este contato?');
+    const deleteContactDialog = this.matDialog.open(ConfirmationModalComponent, {
+      width: '300px',
+      height: '250px',
+      data: {
+        contactId
+      }
+    });
 
-    if (confirmed) {
-      this.contactService.deleteContact(contactId).subscribe(() => {
-        this.contactService.updateListsAfterEvent();
-      });
-    }
+    deleteContactDialog.afterClosed().subscribe((confirmedDeletion: boolean) => {
+      if (confirmedDeletion) {
+        this.contactService.deleteContact(contactId).subscribe();
+      }
+    });
   }
 }

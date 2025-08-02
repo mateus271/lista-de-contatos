@@ -27,23 +27,15 @@ export class ListComponent implements OnInit {
   }
 
   openModal(contactId?: string): void {
-    const dialogRef = this.dialog.open(ContactModalComponent, {
+    this.dialog.open(ContactModalComponent, {
       data: {
         edit: !!contactId,
         contactId: contactId,
       },
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.reloadContacts();
-      }
-    });
   }
 
   deleteContact(contactId: string): void {
-    this.contactService.deleteContact(contactId).subscribe(() => {
-      this.reloadContacts();
-    });
+    this.contactService.deleteContact(contactId).subscribe();
   }
 }

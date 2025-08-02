@@ -62,16 +62,9 @@ export class ContactModalComponent implements OnInit {
           duration: 3000,
         });
 
-        this.reloadContacts();
-
         this.clearSearchAndCloseModal();
       });
     }
-
-  }
-
-  public reloadContacts(): void {
-    this.contactService.updateListsAfterEvent();
   }
 
   public addContact(): void {
@@ -83,8 +76,6 @@ export class ContactModalComponent implements OnInit {
       this.snackBar.open('Novo Contato adicionado!', 'Fechar', {
         duration: 3000,
       });
-
-      this.reloadContacts();
 
       this.clearSearchAndCloseModal();
     });

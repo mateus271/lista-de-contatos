@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Contact } from '../../models/interfaces/contact';
 
 @Injectable({
@@ -29,15 +29,22 @@ export class ContactService {
   public addContact(contact: Partial<Contact>): Observable<Contact> {
     const gerarId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
     const fullContact = { id: gerarId, ...contact };
-    return this.http.post<Contact>(this.API, fullContact);
+
+    return this.http.post<Contact>(this.API, fullContact).pipe(
+      tap(() => this.updateListsAfterEvent())
+    );
   }
 
   public updateContact(contact: Contact): Observable<Contact> {
-    return this.http.patch<Contact>(`${this.API}/${contact.id}`, contact);
+    return this.http.patch<Contact>(`${this.API}/${contact.id}`, contact).pipe(
+      tap(() => this.updateListsAfterEvent())
+    );
   }
 
   public deleteContact(id: string): Observable<any> {
-    return this.http.delete(`${this.API}/${id}`);
+    return this.http.delete(`${this.API}/${id}`).pipe(
+      tap(() => this.updateListsAfterEvent())
+    );
   }
 
   public changeSearchParam(data: string): void {
