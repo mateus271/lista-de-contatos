@@ -1,11 +1,11 @@
 <div class="container">
   <div class="headerDialog">
-    <p *ngIf="data.edit">Editar Contato Existente:</p>
-    <p *ngIf="!data.edit">Criar Novo Contato:</p>
-     <button mat-icon-button class="closeBtn" (click)="closeByBtn()">
-          <mat-icon>close</mat-icon>
+    <h2 *ngIf="data.edit">Editar Contato Existente:</h2>
+    <h2 *ngIf="!data.edit">Criar Novo Contato:</h2>
+      <button mat-icon-button class="closeBtn" (click)="closeByBtn()">
+        <mat-icon>close</mat-icon>
       </button>
-  </div> <br><br>
+  </div>
 
 
   <form [formGroup]="contactForm" >
@@ -21,7 +21,7 @@
       <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">
         O nome deve ter 2 caracteres ou mais.
       </mat-error>
-    </mat-form-field><br>
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -35,7 +35,7 @@
       <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
         Formato de email inválido.
       </mat-error>
-    </mat-form-field> <br>
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Telefone</mat-label>
@@ -49,14 +49,26 @@
         O telefone deve ter ao menos 10 dígitos (incluindo DDD)
       </mat-error>
     </mat-form-field>
-  </form> <br><br>
+  </form>
 
-  <button *ngIf="data.edit" class="no-box-shadow" mat-fab extended (click)="saveChanges()" [disabled]="contactForm.invalid && data.edit">
+  <button
+    *ngIf="data.edit"
+    class="no-box-shadow send-form-data-button"
+    mat-fab extended
+    (click)="saveChanges()"
+    [disabled]="contactForm.invalid && data.edit"
+    [ngClass]="{ 'active-button': !contactForm.invalid }">
     <mat-icon fontSet="material-icons-outlined">save</mat-icon>
     Salvar alterações
   </button>
 
-  <button *ngIf="!data.edit" class="no-box-shadow" mat-fab extended (click)="addContact()" [disabled]="contactForm.invalid && !data.edit">
+  <button
+    *ngIf="!data.edit"
+    class="no-box-shadow send-form-data-button"
+    mat-fab extended
+    (click)="addContact()"
+    [disabled]="contactForm.invalid && !data.edit"
+    [ngClass]="{ 'active-button': !contactForm.invalid }">
     <mat-icon fontSet="material-icons-outlined">add_box</mat-icon>
     Criar contato
   </button>

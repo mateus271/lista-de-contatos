@@ -1,17 +1,29 @@
 mat-sidenav-container {
+  background-color: #111111;
+
   mat-sidenav {
     width: 200px;
     text-align: center;
     padding: 100px 0 0 0;
+    background-color: #111111;
+
+    button {
+      color: white;
+    }
+
+    button.active {
+      background-color: #C4F120;
+      color: #1B1B1B;
+    }
   }
 
   mat-sidenav-content {
     height: 100vh;
-    // margin-left: 200px;
-   
+    overflow: hidden;
 
     mat-toolbar {
-      background-color: var(--mat-sys-primary-fixed);
+      background-color: #111111;
+      color: white;
       display: flex;
       justify-content: space-between;
       padding: 10px 15px;
@@ -30,16 +42,50 @@ mat-sidenav-container {
         mat-form-field {
           min-width: 310px;
         }
-        
+
+        button {
+          color: white;
+        }
       }
     }
-    .info-search{
-          text-align: center;
-          height: 30px;
-         padding: 10px 0 10px 0;
-         font-size: 24px;
-         margin-bottom: 20px;
+
+    .main-content-container {
+      height: calc(95% - 130px);
+      width: 94%;
+      background-color: #1B1B1B;
+      border-radius: 25px;
+      padding: 30px;
+
+      .page-title {
+        color: white;
+        margin: 0;
+        padding: 20px 0 0 20px;
+      }
+
+      .info-search{
+        text-align: center;
+        height: 30px;
+        padding: 10px 0 10px 0;
+        font-size: 24px;
+
+        p {
+          color: white;
+          margin: 0;
         }
-   
+      }
+
+      .content-router {
+        height: calc(100% - 162px);
+
+        app-list {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          overflow-y: scroll;
+          width: 99.6%;
+        }
+      }
+    }
+
   }
 }
